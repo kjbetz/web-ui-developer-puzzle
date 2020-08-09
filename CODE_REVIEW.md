@@ -4,6 +4,12 @@
 
 - 
 
-## Lighthouse
+## Lighthouse accessibility check
 
-## Accessibility
+### Names and labels
+- Buttons do not have an accessible name
+
+### Contrast
+- Background and foreground colors do not have a sufficient contrast ratio
+
+## Accessibility manual check
