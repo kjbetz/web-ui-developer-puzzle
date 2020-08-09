@@ -10,6 +10,7 @@
 ### Contrast
 - Background and foreground colors do not have a sufficient contrast ratio
     - Change background color?
+        - Changed pink accent color to #e20074 (T-Mobile site color)
     - Increase weight?
     - False positive white on "transparent" background?
 
