@@ -9,10 +9,14 @@
 
 ### Contrast
 - Background and foreground colors do not have a sufficient contrast ratio
-    - Change background color?
-        - Changed pink accent color to #e20074 (T-Mobile site color)
-    - Increase weight?
-    - False positive white on "transparent" background?
+    - Button in nav bar
+        - Change background color?
+            - Changed pink accent color to #e20074 (T-Mobile site color)
+        - Increase weight?
+        - False positive white on "transparent" background?
+    - p tag
+        - Too light
+        - Added $gray50 variable for #767676, changed text to use $gray50
 
 ## Accessibility manual check
 
