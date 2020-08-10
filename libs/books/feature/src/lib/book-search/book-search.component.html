@@ -21,7 +21,7 @@
       </div>
       <div class="book--content">
         <div class="book--content--cover">
-          <img src="{{ b.coverUrl }}" />
+          <img src="{{ b.coverUrl }}" [attr.alt]="b.title + ' Cover'" />
         </div>
         <div class="book--content--info">
           <div><strong>Author:</strong> {{ b.authors.join(',') }}</div>
