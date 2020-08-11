@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -13,17 +19,17 @@ export class BookSearchFormComponent implements OnInit {
   searchForm = this.fb.group({
     term: ''
   });
- 
-  get searchTerm(): string {
-    return this.searchForm.value.term;
-  }
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.search();
   }
 
   search() {
-    this.searchBooks.emit(this.searchTerm);
+    const searchTerm = this.searchForm.get('term');
+    searchTerm.valueChanges.forEach((term: string) =>
+      this.searchBooks.emit(term)
+    );
   }
 }
