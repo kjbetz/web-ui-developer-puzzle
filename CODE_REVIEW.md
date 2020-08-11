@@ -2,6 +2,7 @@
 
 ## Code
 
+- Update to Angular 10 and NgRx 10
 - Actions don't follow a standard naming style i.e.: ActionSuccess, confirmedAction, etc...
 - Could make dumb components for item lists in both search results and reading list
 - Can most likely change change detection strategy to OnPush
@@ -33,6 +34,8 @@
     - Increased font weight to normal and lowered to `$gray50` like body text
 
 ## Accessibility manual check
+
+Pretty cool resource: <https://a11y.coffee/>
 
 - Needed to check above items on reading list and search results list as Lighthouse didn't run on those elements
 
