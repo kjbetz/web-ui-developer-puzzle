@@ -12,7 +12,8 @@ describe('Books Selectors', () => {
         {
           ...initialState,
           error: 'Unknown error',
-          loaded: true
+          loaded: true,
+          searchTerm: 'Bobby Fischer'
         }
       )
     };
@@ -37,5 +38,11 @@ describe('Books Selectors', () => {
 
       expect(result).toEqual('Unknown error');
     });
+
+    it('getSearchTerm() should return the current search term', () => {
+      const result = BooksSelectors.getSearchTerm(state);
+
+      expect(result).toEqual('Bobby Fischer');
+    })
   });
 });

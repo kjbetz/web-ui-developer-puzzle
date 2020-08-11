@@ -23,3 +23,8 @@ export const getBooksError = createSelector(
 );
 
 export const getBooks = createSelector(getBooksState, selectAll);
+
+export const getSearchTerm = createSelector(
+  getBooksState, 
+  (state: State) => state.searchTerm
+);

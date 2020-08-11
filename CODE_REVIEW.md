@@ -5,6 +5,7 @@
 - Actions don't follow a standard naming style i.e.: ActionSuccess, confirmedAction, etc...
 - Could make dumb components for item lists in both search results and reading list
 - Can most likely change change detection strategy to OnPush
+- No need to subscribe in component, can async pipe it in template
 - Date pipe doesn't work? Custom pipe?
 
 ## Lighthouse accessibility check

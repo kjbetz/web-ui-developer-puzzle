@@ -1,13 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   addToReadingList,
   clearSearch,
   getAllBooks,
   ReadingListBook,
-  searchBooks
+  searchBooks,
+  getSearchTerm
 } from '@tmo/books/data-access';
 import { Book } from '@tmo/shared/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tmo-book-search',
@@ -15,18 +17,13 @@ import { Book } from '@tmo/shared/models';
   styleUrls: ['./book-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookSearchComponent implements OnInit {
-  books: ReadingListBook[];
+export class BookSearchComponent {
+  books: Observable<ReadingListBook[]> = this.store.select(getAllBooks);
+  searchTerm: Observable<string> = this.store.select(getSearchTerm);
 
   constructor(
     private readonly store: Store,
   ) {}
-
-  ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe(books => {
-      this.books = books;
-    });
-  }
 
   onAddedBookToReadingList(book: Book) {
     this.store.dispatch(addToReadingList({ book }));
