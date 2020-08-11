@@ -58,6 +58,10 @@ const readingListReducer = createReducer(
   ),
   on(ReadingListActions.failedAddToReadingList, (state, action) =>
     readingListAdapter.removeOne(action.book.id, state)
+  ),
+  on(ReadingListActions.markAsRead, (state, action ) => 
+
+    readingListAdapter.updateOne(action.item, state)
   )
 );
 
