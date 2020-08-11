@@ -1,25 +1,5 @@
 <ng-container *ngIf="(readingList$ | async).length > 0; else empty">
-  <div class="reading-list-item" *ngFor="let b of readingList$ | async">
-    <div>
-      <img class="reading-list-item--cover" [src]="b.coverUrl" [attr.alt]="b.title + ' Cover'" />
-    </div>
-    <div class="reading-list-item--details">
-      <strong class="reading-list-item--details--title">{{ b.title }}</strong>
-      <div class="reading-list-item--details--author">
-        {{ b.authors.join(',') }}
-      </div>
-    </div>
-    <div>
-      <button
-        mat-icon-button
-        color="warn"
-        [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
-        (click)="removeFromReadingList(b)"
-      >
-        <mat-icon>remove_circle</mat-icon>
-      </button>
-    </div>
-  </div>
+  <tmo-reading-list-item *ngFor="let b of readingList$ | async" [book]="b"></tmo-reading-list-item>
 </ng-container>
 <ng-template #empty>
   <p class="empty">You haven't added any books to your reading list yet.</p>
