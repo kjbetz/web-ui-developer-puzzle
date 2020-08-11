@@ -1,5 +1,9 @@
 <ng-container *ngIf="(readingList$ | async).length > 0; else empty">
-  <tmo-reading-list-item *ngFor="let b of readingList$ | async" [book]="b"></tmo-reading-list-item>
+  <tmo-reading-list-item
+    *ngFor="let b of readingList$ | async"
+    [book]="b"
+    (removedFromReadingList)="onRemovedFromReadingList($event)"
+  ></tmo-reading-list-item>
 </ng-container>
 <ng-template #empty>
   <p class="empty">You haven't added any books to your reading list yet.</p>

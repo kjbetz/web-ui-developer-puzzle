@@ -8,7 +8,6 @@ import { FormBuilder } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookSearchFormComponent implements OnInit {
- 
   @Output() searchBooks = new EventEmitter<string>();
 
   searchForm = this.fb.group({

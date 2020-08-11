@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { ReadingListItem } from '@tmo/shared/models';
 
 @Component({
@@ -9,7 +9,7 @@ import { ReadingListItem } from '@tmo/shared/models';
 })
 export class ReadingListItemComponent {
   @Input() book: ReadingListItem;
-  @Output() removedFromReadingList: EventEmitter<ReadingListItem>;
+  @Output() removedFromReadingList = new EventEmitter<ReadingListItem>();
 
   removeFromReadingList(book: ReadingListItem) {
     this.removedFromReadingList.emit(book);
