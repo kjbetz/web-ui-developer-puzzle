@@ -27,17 +27,22 @@ export const confirmedAddToReadingList = createAction(
   props<{ book: Book }>()
 );
 
-export const markAsRead = createAction(
+export const toggleMarkedAsRead = createAction(
   '[Reading List] Mark as read',
   props<{ item: ReadingListItem }>()
 );
 
-export const failedMarkAsRead = createAction(
+export const failedToggleMarkedAsRead = createAction(
   '[Reading List] Failed mark as read',
   props<{ item: ReadingListItem }>()
 );
 
-export const confirmedMarkAsRead = createAction(
+export const undoToggledMarkedAsRead = createAction(
+  'Reading List] Undo toggled marked as read',
+  props<{ item: ReadingListItem }>()
+);
+
+export const confirmedMarkedAsRead = createAction(
   '[Reading List] Confirmed mark as read',
   props<{ item: ReadingListItem }>()
 );

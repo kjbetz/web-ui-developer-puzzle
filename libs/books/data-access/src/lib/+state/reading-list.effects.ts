@@ -73,23 +73,26 @@ export class ReadingListEffects implements OnInitEffects {
     )
   );
 
-  markAsRead$ = createEffect(() =>
+  toggleMarkedAsRead$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ReadingListActions.markAsRead),
+      ofType(ReadingListActions.toggleMarkedAsRead),
       optimisticUpdate({
         run: ({ item }) => {
+          item.finished = !item.finished;
+          item.finishedDate = item.finished ? new Date().toISOString() : '';
+
           return this.http
             .put(`/api/reading-list/${item.bookId}/finished`, item)
             .pipe(
               map(() =>
-                ReadingListActions.confirmedMarkAsRead({
+                ReadingListActions.confirmedMarkedAsRead({
                   item
                 })
               )
             );
         },
         undoAction: ({ item }) => {
-          return ReadingListActions.failedMarkAsRead({ item });
+          return ReadingListActions.failedToggleMarkedAsRead({ item });
         }
       })
     )

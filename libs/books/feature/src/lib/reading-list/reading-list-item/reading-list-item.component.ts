@@ -10,13 +10,13 @@ import { ReadingListItem } from '@tmo/shared/models';
 export class ReadingListItemComponent {
   @Input() book: ReadingListItem;
   @Output() removedFromReadingList = new EventEmitter<ReadingListItem>();
-  @Output() markedAsRead = new EventEmitter<ReadingListItem>();
+  @Output() toggledMarkedAsRead = new EventEmitter<ReadingListItem>();
 
   removeFromReadingList(book: ReadingListItem) {
     this.removedFromReadingList.emit(book);
   }
 
-  markAsRead(book: ReadingListItem) {
-    this.markedAsRead.emit(book);
+  toggleMarkedAsRead(book: ReadingListItem) {
+    this.toggledMarkedAsRead.emit(book);
   }
 }

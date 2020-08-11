@@ -3,7 +3,7 @@
     mat-icon-button
     [color]="book.finished ? 'primary' : null"
     [attr.aria-label]="'Mark ' + book.title + ' as read/finished'"
-    (click)="markAsRead(book)"
+    (click)="toggleMarkedAsRead(book)"
   >
     <mat-icon>{{ book.finished ? 'star' : 'star_outline' }}</mat-icon>
   </button>
