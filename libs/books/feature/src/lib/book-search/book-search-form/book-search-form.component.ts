@@ -3,9 +3,18 @@ import {
   Component,
   EventEmitter,
   OnInit,
-  Output
+  Output,
+  OnDestroy
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import {
+  debounceTime,
+  tap,
+  distinctUntilChanged,
+  startWith,
+  takeUntil
+} from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'tmo-book-search-form',
@@ -13,8 +22,9 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./book-search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookSearchFormComponent implements OnInit {
+export class BookSearchFormComponent implements OnInit, OnDestroy {
   @Output() searchBooks = new EventEmitter<string>();
+  private unsubscribe$ = new Subject<void>();
 
   searchForm = this.fb.group({
     term: ''
@@ -23,13 +33,20 @@ export class BookSearchFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.search();
+    this.searchForm
+      .get('term')
+      .valueChanges.pipe(
+        startWith(''),
+        debounceTime(500),
+        distinctUntilChanged(),
+        tap(term => this.searchBooks.emit(term)),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe();
   }
 
-  search() {
-    const searchTerm = this.searchForm.get('term');
-    searchTerm.valueChanges.forEach((term: string) =>
-      this.searchBooks.emit(term)
-    );
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

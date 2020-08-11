@@ -10,7 +10,6 @@ import { Book } from '@tmo/shared/models';
 export class BooksEffects {
   searchBooks$ = createEffect(() =>
     this.actions$.pipe(
-      debounceTime(500),
       ofType(BooksActions.searchBooks),
       fetch({
         run: action => {
