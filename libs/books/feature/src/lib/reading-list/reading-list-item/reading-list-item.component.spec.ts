@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReadingListItemComponent } from './reading-list-item.component';
+import { SharedTestingModule } from '@tmo/shared/testing';
+import { BooksFeatureModule } from '../../books-feature.module';
 
 describe('ReadingListItemComponent', () => {
   let component: ReadingListItemComponent;
@@ -8,9 +10,8 @@ describe('ReadingListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReadingListItemComponent ]
-    })
-    .compileComponents();
+      imports: [BooksFeatureModule, SharedTestingModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

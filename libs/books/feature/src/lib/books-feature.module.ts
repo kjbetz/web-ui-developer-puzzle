@@ -19,7 +19,11 @@ import { ReadingListItemComponent } from './reading-list/reading-list-item/readi
 const EXPORTS = [
   BookSearchComponent,
   TotalCountComponent,
-  ReadingListComponent
+  ReadingListComponent,
+  BookSearchFormComponent,
+  BookSearchResultsComponent,
+  BookSearchResultsItemComponent,
+  ReadingListItemComponent
 ];
 
 @NgModule({
@@ -38,6 +42,6 @@ const EXPORTS = [
     BooksDataAccessModule
   ],
   exports: [...EXPORTS],
-  declarations: [...EXPORTS, BookSearchFormComponent, BookSearchResultsComponent, BookSearchResultsItemComponent, ReadingListItemComponent]
+  declarations: [...EXPORTS]
 })
 export class BooksFeatureModule {}
