@@ -4,6 +4,8 @@
 
 - Update to Angular 10 and NgRx 10
 - Actions don't follow a standard naming style i.e.: ActionSuccess, confirmedAction, etc...
+- Use of different names/types, property names limits re-use of reducers/effects
+  - Although, there  could very well be a good reason and there may be a way around it to use both types
 - Could make dumb components for item lists in both search results and reading list
 - Can most likely change change detection strategy to OnPush
 - No need to subscribe in component, can async pipe it in template
