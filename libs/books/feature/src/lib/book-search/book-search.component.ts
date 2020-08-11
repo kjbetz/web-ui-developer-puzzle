@@ -18,8 +18,8 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookSearchComponent {
-  books: Observable<ReadingListBook[]> = this.store.select(getAllBooks);
-  searchTerm: Observable<string> = this.store.select(getSearchTerm);
+  books$: Observable<ReadingListBook[]> = this.store.select(getAllBooks);
+  searchTerm$: Observable<string> = this.store.select(getSearchTerm);
 
   constructor(
     private readonly store: Store,

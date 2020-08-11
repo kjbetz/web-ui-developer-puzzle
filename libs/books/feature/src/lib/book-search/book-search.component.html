@@ -1,12 +1,12 @@
 <tmo-book-search-form (searchBooks)="onSearchBooks($event)"></tmo-book-search-form>
 
-<ng-container *ngIf="(searchTerm | async); else empty">
-  <tmo-book-search-results *ngIf="(books | async) as bookList" (addedBookToReadingList)="onAddedBookToReadingList($event)" [books]="bookList"></tmo-book-search-results>
+<ng-container *ngIf="(searchTerm$ | async); else empty">
+  <tmo-book-search-results *ngIf="(books$ | async) as bookList" (addedBookToReadingList)="onAddedBookToReadingList($event)" [books]="bookList"></tmo-book-search-results>
 </ng-container>
 <ng-template #empty>
   <div class="empty">
     <p>
-      Try searching for a topic, for example "<a (click)="searchExample()"
+      Try searching for a topic, for example "<a (click)="searchExample('javascript')"
         >JavaScript</a
       >".
     </p>
