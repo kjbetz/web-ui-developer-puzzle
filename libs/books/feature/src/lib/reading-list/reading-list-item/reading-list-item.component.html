@@ -1,4 +1,14 @@
 <div>
+  <button
+    mat-icon-button
+    [color]="book.finished ? 'primary' : null"
+    [attr.aria-label]="'Mark ' + book.title + ' as read/finished'"
+    (click)="toggleMarkedAsRead(book)"
+  >
+    <mat-icon>{{ book.finished ? 'star' : 'star_outline' }}</mat-icon>
+  </button>
+</div>
+<div>
   <img
     class="reading-list-item--cover"
     [src]="book.coverUrl"
@@ -9,6 +19,9 @@
   <strong class="reading-list-item--details--title">{{ book.title }}</strong>
   <div class="reading-list-item--details--author">
     {{ book.authors.join(',') }}
+  </div>
+  <div *ngIf="book.finished" class="reading-list-item--details--finished">
+    <em>Finished: {{ book.finishedDate | date: 'medium' }}</em>
   </div>
 </div>
 <div>

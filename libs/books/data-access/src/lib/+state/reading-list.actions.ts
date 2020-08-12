@@ -27,6 +27,25 @@ export const confirmedAddToReadingList = createAction(
   props<{ book: Book }>()
 );
 
+export const toggleMarkedAsRead = createAction(
+  '[Reading List] Mark as read',
+  props<{ item: ReadingListItem }>()
+);
+
+export const failedToggleMarkedAsRead = createAction(
+  '[Reading List] Failed mark as read',
+  props<{ item: ReadingListItem }>()
+);
+
+export const undoToggledMarkedAsRead = createAction(
+  'Reading List] Undo toggled marked as read',
+  props<{ item: ReadingListItem }>()
+);
+
+export const confirmedMarkedAsRead = createAction(
+  '[Reading List] Confirmed mark as read',
+  props<{ item: ReadingListItem }>()
+);
 export const removeFromReadingList = createAction(
   '[Reading List] Remove from list',
   props<{ item: ReadingListItem }>()
