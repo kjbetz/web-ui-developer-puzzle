@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import * as BooksActions from './books.actions';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { Book } from '@tmo/shared/models';
 
 @Injectable()
